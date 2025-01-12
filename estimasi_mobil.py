@@ -17,7 +17,7 @@ st.markdown("""
             color: #333;
         }
 
-        /* Logo di bagian atas */
+        /* Logo di bagian tengah */
         .logo {
             display: block;
             margin-left: auto;
@@ -82,8 +82,13 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Menambahkan logo di bagian atas
-st.image("logo.png", use_column_width=True, caption="Logo Universitas")
+# Menambahkan logo di antara teks
+st.markdown("<h2> Tugas Mata Kuliah Pembelajaran Mesin </h2>", unsafe_allow_html=True)
+st.markdown("<h3> Project Machine Learning </h3>", unsafe_allow_html=True)
+st.markdown("<h4> Prediksi Harga Mobil Bekas Menggunakan Regresi Linier dan Decision Tree Regressor </h4>", unsafe_allow_html=True)
+
+# Menambahkan logo
+st.image("logo.png", use_column_width=True, caption="Logo Universitas", width=200)
 
 # Membuat dua kolom
 col1, col2 = st.columns([1, 3])
@@ -91,17 +96,11 @@ col1, col2 = st.columns([1, 3])
 # Kolom kiri - menampilkan data
 with col1:
     st.markdown("<div class='col-left'>", unsafe_allow_html=True)
-    st.markdown("<h2> Tugas Mata Kuliah Pembelajaran Mesin </h2>", unsafe_allow_html=True)
-    st.markdown("<h3> Project Machine Learning </h3>", unsafe_allow_html=True)
-    st.markdown("<h4> Prediksi Harga Mobil Bekas Menggunakan Regresi Linier dan Decision Tree Regressor </h4>", unsafe_allow_html=True)
-    
-    # Data Diri
-    st.markdown("<div class='data-section'><h4> Disusun Oleh: </h4>", unsafe_allow_html=True)
+    st.markdown("<h4> Disusun Oleh: </h4>", unsafe_allow_html=True)
     st.markdown("- **Muh Bintang Mahardani** (17225123)", unsafe_allow_html=True)
     st.markdown("- **Taufiq Ismail** (17215032)", unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
-    
-    st.markdown("<div class='data-section'><b>Kelas:</b> 17.4A.26", unsafe_allow_html=True)
+    st.markdown("<div class='data-section'>", unsafe_allow_html=True)
+    st.markdown("<b>Kelas:</b> 17.4A.26", unsafe_allow_html=True)
     st.markdown("<b>Program Studi:</b> Teknologi Informasi (S1)</div>", unsafe_allow_html=True)
 
     st.markdown("<div class='data-section'><b>Universitas:</b> Universitas Bina Sarana Informatika", unsafe_allow_html=True)
@@ -115,25 +114,4 @@ with col2:
     st.title('Estimasi Harga Mobil Bekas')
 
     # Mengubah tipe input menjadi bilangan bulat (integer)
-    year = st.number_input('Input Tahun Mobil', min_value=1900, max_value=2025, step=1, format="%d", value=None) 
-    mileage = st.number_input('Input Km Mobil', min_value=0, step=1, format="%d", value=None)
-    tax = st.number_input('Input Pajak Mobil', min_value=0, step=1, format="%d", value=None)
-    mpg = st.number_input('Input Konsumsi BBM Mobil', min_value=0, step=1, format="%d", value=None)
-    engineSize = st.number_input('Input Engine Size', min_value=0, step=1, format="%d", value=None)
-
-    # Menyimpan hasil prediksi di variabel
-    predict = None
-
-    # Validasi input: jika semua input sudah diisi (nilai tidak None)
-    if year is not None and mileage is not None and tax is not None and mpg is not None and engineSize is not None:
-        # Menampilkan tombol hanya jika semua input sudah valid
-        if st.button('Estimasi Harga'):
-            # Melakukan prediksi dengan model yang dimuat
-            predict = model.predict([[year, mileage, tax, mpg, engineSize]])
-            st.write(f'Estimasi harga mobil bekas dalam Pounds: {predict[0]}')
-            st.write(f'Estimasi harga mobil bekas dalam IDR (Juta): {predict[0] * 19000}')
-    else:
-        # Jika ada input yang masih kosong, tampilkan peringatan
-        st.warning('Harap isi semua input terlebih dahulu!')
-
-    st.markdown("</div>", unsafe_allow_html=True)
+    year = st.number_input('Input Tahun Mobil', min_value=1900, max_value=

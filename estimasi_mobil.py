@@ -80,7 +80,7 @@ st.markdown("<h3> Project Machine Learning </h3>", unsafe_allow_html=True)
 st.markdown("<h4> Prediksi Harga Mobil Bekas Menggunakan Regresi Linier dan Decision Tree Regressor </h4>", unsafe_allow_html=True)
 
 # Menambahkan logo
-st.image("logo.png", use_column_width=True, caption="Logo Universitas", width=200)
+st.image("logo.png", use_column_width=True, caption="Logo Universitas", width=20)
 
 # Membuat dua kolom
 col1, col2 = st.columns([1, 3])

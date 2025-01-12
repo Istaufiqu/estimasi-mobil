@@ -10,10 +10,21 @@ st.set_page_config(page_title="Prediksi Harga Mobil Bekas", layout="wide")
 # Menambahkan CSS untuk mempercantik tampilan
 st.markdown("""
     <style>
-        /* Style untuk keseluruhan halaman */
+        /* Mengatur seluruh latar belakang halaman menjadi putih */
         body {
             background-color: #ffffff;
             font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        /* Logo di bagian atas */
+        .logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 200px;
+            padding-top: 20px;
+            padding-bottom: 20px;
         }
 
         /* Kolom kiri */
@@ -70,6 +81,9 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
+
+# Menambahkan logo di bagian atas
+st.image("logo.png", use_column_width=True, caption="Logo Universitas")
 
 # Membuat dua kolom
 col1, col2 = st.columns([1, 3])

@@ -13,7 +13,6 @@ st.markdown("""
         /* Kolom kiri */
         .col-left {
             padding: 20px;
-            border-right: 2px solid #f0f0f0;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -54,9 +53,12 @@ st.markdown("""
             border: none;
         }
 
+        .stButton>button:hover {
+            background-color: #0d59d1;
+        }
+
         /* Style untuk warning message */
         .stWarning {
-            background-color: #f9e6e6;
             color: #d32f2f;
             border: 1px solid #d32f2f;
             padding: 10px;

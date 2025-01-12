@@ -14,10 +14,10 @@ st.markdown("""
         .col-left {
             padding: 20px;
             border-right: 2px solid #f0f0f0;
-            background-color: #f9f9f9;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
+            text-align: center;
         }
 
         /* Kolom kanan */

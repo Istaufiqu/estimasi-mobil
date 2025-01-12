@@ -21,6 +21,9 @@ st.markdown("""
             padding: 20px;
             border-right: 2px solid #f0f0f0;
             background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         /* Kolom kanan */
@@ -43,6 +46,7 @@ st.markdown("""
         .data-section h4 {
             color: #1a73e8;
             font-size: 18px;
+            margin-bottom: 10px;
         }
 
         /* Style untuk input dan tombol */
@@ -77,22 +81,27 @@ col1, col2 = st.columns([1, 3])
 # Kolom kiri - menampilkan data
 with col1:
     st.markdown("<div class='col-left'>", unsafe_allow_html=True)
+    # Judul
     st.markdown("<h2> Tugas Mata Kuliah Pembelajaran Mesin </h2>", unsafe_allow_html=True)
     st.markdown("<h3> Project Machine Learning </h3>", unsafe_allow_html=True)
     st.markdown("<h4> Prediksi Harga Mobil Bekas Menggunakan Regresi Linier dan Decision Tree Regressor </h4>", unsafe_allow_html=True)
-    
+
     # Data Diri
-    st.markdown("<div class='data-section'><h4> Disusun Oleh: </h4>", unsafe_allow_html=True)
+    st.markdown("<div class='data-section'>", unsafe_allow_html=True)
+    st.markdown("<h4> Disusun Oleh: </h4>", unsafe_allow_html=True)
     st.markdown("- **Muh Bintang Mahardani** (17225123)", unsafe_allow_html=True)
     st.markdown("- **Taufiq Ismail** (17215032)", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
     
-    st.markdown("<div class='data-section'><b>Kelas:</b> 17.4A.26", unsafe_allow_html=True)
+    st.markdown("<div class='data-section'>", unsafe_allow_html=True)
+    st.markdown("<b>Kelas:</b> 17.4A.26", unsafe_allow_html=True)
     st.markdown("<b>Program Studi:</b> Teknologi Informasi (S1)</div>", unsafe_allow_html=True)
 
-    st.markdown("<div class='data-section'><b>Universitas:</b> Universitas Bina Sarana Informatika", unsafe_allow_html=True)
+    st.markdown("<div class='data-section'>", unsafe_allow_html=True)
+    st.markdown("<b>Universitas:</b> Universitas Bina Sarana Informatika", unsafe_allow_html=True)
     st.markdown("<b>Fakultas:</b> Fakultas Teknik dan Informatika", unsafe_allow_html=True)
     st.markdown("<b>Alamat:</b> Jl. Kemanggisan Utama, RT.3/RW.2, Slipi, Kec. Palmerah, Kota Jakarta Barat, DKI Jakarta 11480</div>", unsafe_allow_html=True)
+
     st.markdown("</div>", unsafe_allow_html=True)
 
 # Kolom kanan - aplikasi prediksi harga mobil bekas

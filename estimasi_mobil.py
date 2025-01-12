@@ -54,10 +54,6 @@ st.markdown("""
             border: none;
         }
 
-        .stButton>button:hover {
-            background-color: #0d59d1;
-        }
-
         /* Style untuk warning message */
         .stWarning {
             background-color: #f9e6e6;

@@ -12,7 +12,7 @@ except Exception as e:
 st.title('Estimasi Harga Mobil Bekas')
 
 # Input data: Mengubah tipe input menjadi bilangan bulat (integer)
-year = st.number_input('Input Tahun Mobil', min_value=1900, max_value=2025, step=1, format="%d") 
+year = st.number_input('Input Tahun Mobil', min_value=0, max_value=2025, step=1, format="%d") 
 mileage = st.number_input('Input Km Mobil', min_value=0, step=1, format="%d")
 tax = st.number_input('Input Pajak Mobil', min_value=0, step=1, format="%d")
 mpg = st.number_input('Input Konsumsi BBM Mobil', min_value=0, step=1, format="%d")

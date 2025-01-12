@@ -1,41 +1,30 @@
 import pickle
 import streamlit as st
-import numpy as np
 
 # Memuat model yang sudah disimpan
-try:
-    model = pickle.load(open('estimasi_mobil.sav', 'rb'))
-except Exception as e:
-    st.error(f'Error saat memuat model: {e}')
-    st.stop()
+model = pickle.load(open('estimasi_mobil.sav', 'rb'))
 
 st.title('Estimasi Harga Mobil Bekas')
 
-# Input data: Mengubah tipe input menjadi bilangan bulat (integer)
-year = st.number_input('Input Tahun Mobil', min_value=0, max_value=2025, step=1, format="%d") 
-mileage = st.number_input('Input Km Mobil', min_value=0, step=1, format="%d")
-tax = st.number_input('Input Pajak Mobil', min_value=0, step=1, format="%d")
-mpg = st.number_input('Input Konsumsi BBM Mobil', min_value=0, step=1, format="%d")
-engineSize = st.number_input('Input Engine Size', min_value=0, step=1, format="%d")
+# Mengubah tipe input menjadi bilangan bulat (integer)
+# Set nilai default menjadi None, agar tidak ada 0 yang ditampilkan di awal
+year = st.number_input('Input Tahun Mobil', min_value=1900, max_value=2025, step=1, format="%d", value=None) 
+mileage = st.number_input('Input Km Mobil', min_value=0, step=1, format="%d", value=None)
+tax = st.number_input('Input Pajak Mobil', min_value=0, step=1, format="%d", value=None)
+mpg = st.number_input('Input Konsumsi BBM Mobil', min_value=0, step=1, format="%d", value=None)
+engineSize = st.number_input('Input Engine Size', min_value=0, step=1, format="%d", value=None)
 
-# Menginisialisasi variabel prediksi
-predict = ''
+# Menyimpan hasil prediksi di variabel
+predict = None
 
-# Tombol untuk estimasi harga
-if st.button('Estimasi Harga'):
-    # Validasi: pastikan semua input lebih dari 0
-    if year == 0 or mileage == 0 or tax == 0 or mpg == 0 or engineSize == 0:
-        st.warning('Harap isi semua input terlebih dahulu!')
-    else:
-        try:
-            # Memastikan input berupa array 2D yang sesuai dengan model
-            input_data = np.array([[year, mileage, tax, mpg, engineSize]])
-            
-            # Melakukan prediksi
-            predict = model.predict(input_data)
-            
-            # Menampilkan hasil prediksi dalam Pounds dan IDR
-            st.write(f'Estimasi harga mobil bekas dalam Pounds: {predict[0]:,.2f}')
-            st.write(f'Estimasi harga mobil bekas dalam IDR (Juta): {predict[0] * 19000:,.2f}')
-        except Exception as e:
-            st.error(f'Error saat melakukan prediksi: {e}')
+# Validasi input: jika semua input sudah diisi (nilai tidak None)
+if year is not None and mileage is not None and tax is not None and mpg is not None and engineSize is not None:
+    # Menampilkan tombol hanya jika semua input sudah valid
+    if st.button('Estimasi Harga'):
+        # Melakukan prediksi dengan model yang dimuat
+        predict = model.predict([[year, mileage, tax, mpg, engineSize]])
+        st.write(f'Estimasi harga mobil bekas dalam Pounds: {predict[0]}')
+        st.write(f'Estimasi harga mobil bekas dalam IDR (Juta): {predict[0] * 19000}')
+else:
+    # Jika ada input yang masih kosong, tampilkan peringatan
+    st.warning('Harap isi semua input terlebih dahulu!')

@@ -10,12 +10,6 @@ st.set_page_config(page_title="Prediksi Harga Mobil Bekas", layout="wide")
 # Menambahkan CSS untuk mempercantik tampilan
 st.markdown("""
     <style>
-        /* Style untuk keseluruhan halaman */
-        body {
-            background-color: #ffffff;
-            font-family: 'Arial', sans-serif;
-        }
-
         /* Kolom kiri */
         .col-left {
             padding: 20px;
